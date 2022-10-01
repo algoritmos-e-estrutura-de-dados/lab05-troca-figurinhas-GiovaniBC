@@ -1,33 +1,33 @@
-def maximizar_troca_de_figurinhas(figurinhaMaria, figurinhaJoao, A, B):
+def maximizar_troca_de_figurinhas(figurinhasMaria, figurinhasJoao):
+    figM = 0
+    figJ = 0
 
-    indm = 0
-    indj = 0 
-    i = 0
-    j = 0
-    m = 0
-    n = 0
+    figurinhasMaria = list(set(figurinhasMaria))
+    figurinhasJoao = list(set(figurinhasJoao))
 
-    for i in range(int(A)):
-      for j in range(int(B)):
-        if figurinhaMaria[i] == figurinhaJoao[j]:
-          indm += 1
-   
 
- 
-    for m in range(int(B)):
-      for n in range(int(A)):
-        if figurinhaJoao[m] == figurinhaMaria[n]:
-          indj += 1
-   
-    if (int(A) - int(indm)) < (int(B) - int(indj)):
-        return print(f"O máximo de figurinhas para troca é:{int(A) - int(indm)}")
+    for i in range(len(figurinhasMaria)):
+        for j in range(len(figurinhasJoao)):
+            if figurinhasMaria[i] == figurinhasJoao[j]:
+                figM += 1
+
+
+    for k in range(len(figurinhasJoao)):
+        for l in range(len(figurinhasMaria)):
+            if figurinhasJoao[k] == figurinhasMaria[l]:
+                figJ += 1
+
+
+
+
+    if (len(figurinhasMaria) - int(figM)) < (len(figurinhasJoao) - int(figJ)):
+        return print(f"Máximo de figurinhas para troca {len(figurinhasMaria) - int(figM)}")
     else:
-        return print(f"O máximo de figurinhas para troca é:{int(B) - int(indj)}")
- 
-  
+        return print(f"Máximo de figurinhas para troca {len(figurinhasJoao) - int(figJ)}")
+
 
 if __name__ == '__main__':
     A, B = input().split(' ')
     figurinhas_da_maria = input().split(' ')
     figurinhas_da_joao = input().split(' ')
-    maximizar_troca_de_figurinhas(figurinhas_da_maria, figurinhas_da_joao, A, B)
+    maximizar_troca_de_figurinhas(figurinhas_da_maria, figurinhas_da_joao)
